@@ -1,0 +1,23 @@
+{
+  "name": "mhcid-285-reversi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lerstad/MHCID-285-Reversi.git"
+  },
+  "author": "Lindsey Erstad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lerstad/MHCID-285-Reversi/issues"
+  },
+  "homepage": "https://github.com/lerstad/MHCID-285-Reversi#readme",
+  "dependencies": {
+    "node-static": "^0.7.11",
+    "socket.io": "^4.6.1"
+  }
+}
