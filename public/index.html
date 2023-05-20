@@ -25,10 +25,10 @@
       
       <div class="row m-3">
         <div class="col text-center">
-          <a class="btn btn-dark text-nowrap" href="about.html">About</a>
+          <a class="btn btn-info text-nowrap" href="about.html">About</a>
         </div>
         <div class="col text-center">
-          <a class="btn btn-dark text-nowrap" href="https://en.wikipedia.org/wiki/Reversi" target="_blank">Rules</a>
+          <a class="btn btn-info text-nowrap" href="https://en.wikipedia.org/wiki/Reversi" target="_blank">Rules</a>
         </div>
       </div>
 
@@ -40,9 +40,11 @@
 
       <div class="row align-items-center justify-content-center m-3">
         <div class="col-6">
-          <span>Name</span>
-          <input type="text" />
-          <button type="submit" class="btn btn-info text-nowrap">Enter Lobby</button>
+          <div class="input-group">
+            <span class="input-group-text" id="displayName">Name</span>
+            <input type="text" class="form-control text-nowrap" id="nameInput" />
+            <button type="submit" class="btn btn-dark text-nowrap">Enter Lobby</button>
+          </div>
         </div>
       </div>
 
