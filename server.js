@@ -110,7 +110,7 @@ io.on('connection', (socket) => {
             if ((typeof sockets == 'undefined') || (sockets === null) || !sockets.includes(socket)) {
                 let response = {};
                 response.result = 'fail';
-                response.message = 'Server internal error joining chat room';
+                response.message = 'Server internal empty joining chat room';
                 socket.emit('join_room_response', response);
                 serverLog('join_room command failed', JSON.stringify(response));
             }
@@ -534,6 +534,30 @@ io.on('connection', (socket) => {
             response.result = 'fail';
             response.message = 'There was no valid game associated with the play_token command';
             socket.emit('play_token_response', response);
+            serverLog('play_token command failed', JSON.stringify(response));
+            return;
+        }
+
+        /* Make sure the current attempt is by the correct color */
+        if (color !== game.whose_turn) {
+            let response = {
+                result: 'fail',
+                message: 'play_token played the wrong color. It\'s not their turn'
+            }
+            socket.emit('play_token_response',response);
+            serverLog('play_token command failed', JSON.stringify(response));
+            return;
+        }
+
+         /* Make sure the current play is coming from the expected player */
+         if (
+            (( game.whose_turn === 'pink') && (game.player_pink.socket != socket.id)) ||
+            (( game.whose_turn === 'blue') && (game.player_blue.socket != socket.id))) {
+            let response = {
+                result: 'fail',
+                message: 'play_token played the right color, but by the wrong person'
+            }
+            socket.emit('play_token_response',response);
             serverLog('play_token command failed', JSON.stringify(response));
             return;
         }

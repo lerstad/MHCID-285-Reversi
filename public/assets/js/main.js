@@ -296,7 +296,25 @@ socket.on('game_update', (payload) =>{
         return;
     }
 
-    $("#my_color").html('<h3 id="my_color">I am ' + my_color + '</h3>');
+    if ( my_color === 'pink') {
+        $("#my_color").html('<h3 id="my_color">I am pink</h3>');
+    }
+    else if ( my_color === 'blue') {
+        $("#my_color").html('<h3 id="my_color">I am blue</h3>');
+    }
+    else {
+        $("#my_color").html('<h3 id="my_color">Error: I don\'t know what color I am</h3>');
+    }
+
+    if ( payload.game.whose_turn === 'pink') {
+        $("#my_color").append('<h4>It is pink\'s turn</h4>');
+    }
+    else if ( payload.game.whose_turn === 'blue') {
+        $("#my_color").append('<h4>It is blue\'s turn</h4>');
+    }
+    else {
+        $("#my_color").append('<h4>Error: Don\'t know whose turn it is</h4>');
+    }
 
     let pinksum = 0;
     let bluesum = 0;
@@ -352,8 +370,8 @@ socket.on('game_update', (payload) =>{
                     altTag = "pink token"
                 }
                 else {
-                    graphic = "Reversi Error.gif";
-                    altTag = "error"
+                    graphic = "Reversi empty.gif";
+                    altTag = "empty"
                 }
 
                const t = Date.now();
@@ -403,6 +421,7 @@ socket.on('game_over', (payload) =>{
     }
     if(payload.result === 'fail'){
         console.log(payload.message);
+        alert(payload.message);
         return;
     }
 
