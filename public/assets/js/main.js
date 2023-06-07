@@ -410,6 +410,7 @@ socket.on('play_token_response', (payload) =>{
     }
     if(payload.result === 'fail'){
         console.log(payload.message);
+        alert(payload.message);
         return;
     }
 })
@@ -421,7 +422,6 @@ socket.on('game_over', (payload) =>{
     }
     if(payload.result === 'fail'){
         console.log(payload.message);
-        alert(payload.message);
         return;
     }
 
